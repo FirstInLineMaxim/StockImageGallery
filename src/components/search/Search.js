@@ -1,7 +1,7 @@
 import React from "react";
 import "./Search.css";
 
-import { FaSearch } from "react-icons/fa";
+// import { FaSearch } from "react-icons/fa";
 import SearchBar from "../SearchBar";
 
 

@@ -17,7 +17,9 @@ export default function ImageFetch({query}){
         async function fetchData(){
        await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80`,{
             headers:{
-                Authorization: "563492ad6f91700001000001c4464c195bdb4507be4af966d2c54283"
+
+                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
+
             }
         })
         .then((res)=>res.json())
@@ -39,76 +41,51 @@ export default function ImageFetch({query}){
     });
   };
 
-  const lastPostIndex = currentPage * postsPerPage;
-  const firstPostIndex = lastPostIndex - postsPerPage;
-  const currentPosts = imageArray.slice(firstPostIndex, lastPostIndex);
 
-  const imageMap = currentPosts.map((i, index) => {
-    return (
-      <>
-        <button
-          style={{ background: "none", border: "0px" }}
-          onClick={() => {
-            setOpenPopup(true);
-            setImageIndex(i);
-            console.log(i);
-          }}
-        >
-          {" "}
-          <img src={i.src.tiny} />
-        </button>
-      </>
-    );
-  });
+    const lastPostIndex= currentPage * postsPerPage
+    const firstPostIndex = lastPostIndex - postsPerPage
+    const currentPosts =  imageArray.slice(firstPostIndex,lastPostIndex)
+   
+    const  imageMap= currentPosts.map((i,index)=>{
 
-  if (imageArray && imageIndex) {
-    return (
-      <>
-        {imageMap}
-        <Popup open={openPopup} onClose={() => setOpenPopup(false)}>
-          <div
-            style={{
-              width: "1000px",
-              height: "600px",
-              background: "white",
-              border: "0px",
-              paddingLeft: "2em",
-            }}
-          >
-            <div className="popup-info-cont">
-              <h2 className="popup-author">{imageIndex.photographer}</h2>
-              <button
-                className="popup-bttn"
-                onClick={() => {
-                  saveImgHandler();
-                }}
-              >
-                Free download
-              </button>
-            </div>
-            <div id="my-node">
-              <img className="popup-img" src={imageIndex.src.medium} />
-            </div>
-          </div>
-        </Popup>
+       return(
+        <>
+       <button  style={{background: 'none',border:'0px'}} onClick={()=>{
+        setOpenPopup(true)
+        setImageIndex(i)
+        console.log(i)
+       }}> <figure > <img  src={i.src.tiny} className="single-image" /></figure></button>
+   
+     </>
+       )
+    })
+    
+    if(imageArray&&imageIndex){
+    return(
+        <>
+       <div className="media-container">
+            <span className="media-grid"> {imageMap} </span>
+        </div>
+    <Popup open={openPopup} onClose={()=>setOpenPopup(false)}>
+        <div style={{width:'1000px',height:'600px',background: 'white',border:'0px'}} >
+        <h1>{imageIndex.photographer}</h1>
+        <img src={imageIndex.src.medium}/>
+        </div>
+    </Popup>
 
-        <Pagination
-          totalPosts={imageArray.length}
-          postsPerPage={postsPerPage}
-          setCurrentPage={setCurrentPage}
-        />
-      </>
-    );
-  }
+       <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
 
-  return (
-    <>
-      {imageMap}
-      <Pagination
-        totalPosts={imageArray.length}
-        postsPerPage={postsPerPage}
-        setCurrentPage={setCurrentPage}
-      />
-    </>
-  );
+        </>
+    )
 }
+
+    return(
+        <>
+        <div className="media-container">
+            <span className="media-grid"> {imageMap} </span>
+        </div>
+           <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+            </>
+    )
+}
+

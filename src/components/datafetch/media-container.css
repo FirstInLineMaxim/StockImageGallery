@@ -1,0 +1,145 @@
+
+
+
+.media-container {
+    display: grid;
+    justify-content: center;
+}
+
+.media-grid {
+    --gap: 16px;
+    --num-cols: 3;
+    --row-height: 300px;
+
+    box-sizing: border-box;
+    padding: var(--gap);
+    max-width: 1400px;
+
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+
+    gap: var(--gap);
+}
+
+
+.media-grid > button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+
+
+.single-image:hover{
+    transition: background-color 0.5s ease;
+    background-color: #02251ed3;
+    cursor: pointer;
+    position:relative;
+    z-index: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1.3);
+    -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+
+}
+
+
+@media screen and (max-width: 1024px) {
+    .media-grid {
+        --num-cols: 2;
+        --row-height: 240px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .media-grid {
+        width: 100%;
+        --num-cols: 1;
+        --row-height: 450px;
+        --gap: 12px;
+    }
+}
+
+/* video css */
+
+.video-container {
+    display: contents;
+    justify-content: center;
+}
+
+.video-grid {
+ max-width: 1400px;
+    display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 16px;
+        width: 90%;
+        margin: 32px auto;
+}
+
+.video-grid > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .video-grid {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+
+    }
+}
+
+.single-video {
+    max-width: 450px;
+    height: auto ;
+}
+
+.single-video:hover{
+    cursor: pointer;
+}
+
+/* .single-video::-webkit-media-controls {
+    display: none !important;
+} */
+
+.pagination-component {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0px ;
+}
+
+.pagination-button {
+    margin: 12px;
+    padding: 16px;
+    border-radius: 6px;
+    color: #444;
+    background-color:#fff; }
+
+.pagination-button:hover {
+    transition: background-color 0.5s ease;
+    background-color: #009677;
+    color: #fff;
+    cursor: pointer;
+
+}

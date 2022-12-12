@@ -10,10 +10,10 @@ export default function Pagination({totalPosts, postsPerPage,setCurrentPage}){
 
     
     return(
-        <div >
+        <div className="pagination-component">
         {
             pages.map((page,index) =>{
-                return <button  onClick={()=>setCurrentPage(page)} key={index}>{page}</button>
+                return <button  onClick={()=>setCurrentPage(page)} key={index} className="pagination-button">{page}</button>
             })
         }
         </div>
