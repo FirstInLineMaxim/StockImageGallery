@@ -3,7 +3,6 @@ import { Link ,NavLink } from 'react-router-dom';
 import './App.css';
 import CustomRoutes from './components/router/Router';
 import Header from "./components/header/Header";
-import TheDevs from './TheDevs/TheDevs';
 
 function App() {
   const [searchInput, setSearchInput] = useState('Nature');
@@ -24,7 +23,6 @@ function App() {
     <CustomRoutes search={searchInput}/>
 
     {/* TheDEVS */}
-    <TheDevs/>
     </>
   );
 }
