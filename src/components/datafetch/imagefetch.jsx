@@ -13,7 +13,7 @@ export default function ImageFetch({query}){
         async function fetchData(){
        await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=25`,{
             headers:{
-                Authorization: "563492ad6f91700001000001620506b875614302bd8f6e133d82d091"
+                Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
             }
         })
         .then((res)=>res.json())
@@ -38,11 +38,11 @@ export default function ImageFetch({query}){
 
        return(
         <>
-       <button style={{background: 'none',border:'0px'}} onClick={()=>{
+       <button  style={{background: 'none',border:'0px'}} onClick={()=>{
         setOpenPopup(true)
         setImageIndex(i)
         console.log(i)
-       }}> <img src={i.src.tiny} /></button>
+       }}> <img  className="single-image" src={i.src.tiny} /></button>
    
      </>
        )
@@ -51,14 +51,8 @@ export default function ImageFetch({query}){
     if(imageArray&&imageIndex){
     return(
         <>
-<<<<<<< HEAD
-        <div className="media-container">
-            
-            <span className="media-grid">
-              {imageMap}
-                </span>
-       </div>
-=======
+
+
     {imageMap}
     <Popup open={openPopup} onClose={()=>setOpenPopup(false)}>
         <div style={{width:'1000px',height:'600px',background: 'white',border:'0px'}} >
@@ -68,14 +62,16 @@ export default function ImageFetch({query}){
     </Popup>
 
        <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
->>>>>>> 1f8919873edb8c5b9c1e4bc7599224cc7f972784
+
         </>
     )
 }
 
     return(
         <>
-        {imageMap}
+        <div className="media-container">
+            <span className="media-grid"> {imageMap} </span>
+        </div>
            <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
             </>
     )
