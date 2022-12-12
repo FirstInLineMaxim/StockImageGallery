@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import './media-container.css';
+
 
 export default function VideoFetch(){
     const [videoArray,setvideoArray] = useState([])
-
+    
     useEffect(()=>{
         async function fetchData(){
        await fetch("https://api.pexels.com/videos/search?query=nature&per_page=25"
@@ -20,23 +21,39 @@ export default function VideoFetch(){
     },[])
 
     const  videoMap= videoArray.map((i)=>{
-        console.log(i)
         const url = i.video_files[2].link
        return(
         <video controls className="single-video"> 
         <source src={url} type="video/mp4" />
         </video>
        )
-
-
    })
+
+    // for video autoplay
+
+//     const ref = useRef(null);
+//     const [focus, setFocus] = useState(false);
+
+//     const loop = () => {
+//         ref.current.play();
+//     }
+
+//     const onEndedLoop = () => {
+//         if (focus) loop();
+//     }
+
+    
+
+//     useEffect(() => {
+// if (focus) loop();
+//     }, [focus])
+  
     return(
         <>
-        <div className="media-container">
-            <span className="media-grid video-grid">
+        <div className="video-container">
+            <span className="video-grid">
                 {videoMap}
                 </span>
-            
         </div>
         
         </>
