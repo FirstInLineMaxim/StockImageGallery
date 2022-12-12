@@ -1,9 +1,9 @@
 .header-container {
-  height: 75vh;
+  height: 70vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../../images/hero.jpeg");
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   position: relative;
 }
 
@@ -40,4 +40,13 @@
   position: absolute;
   bottom: 1px;
   right: 1.5em;
+}
+
+@media (max-width: 900px) {
+  .header-logo {
+    width: 20%;
+  }
+  .header-button {
+    width: 20%;
+  }
 }
