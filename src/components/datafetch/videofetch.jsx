@@ -2,15 +2,15 @@ import React, { useEffect, useState, useRef} from "react";
 import './media-container.css';
 
 
-export default function VideoFetch(){
+export default function VideoFetch({query}){
     const [videoArray,setvideoArray] = useState([])
     
     useEffect(()=>{
         async function fetchData(){
-       await fetch("https://api.pexels.com/videos/search?query=nature&per_page=25"
+       await fetch(`https://api.pexels.com/videos/search?query=${query}&per_page=25`
        ,{
             headers:{
-                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
+                Authorization: "563492ad6f91700001000001620506b875614302bd8f6e133d82d091"
             }
         })
         .then((res)=>res.json())
@@ -18,7 +18,7 @@ export default function VideoFetch(){
         }
         fetchData()
         
-    },[])
+    },[query])
 
     const  videoMap= videoArray.map((i)=>{
         const url = i.video_files[2].link
