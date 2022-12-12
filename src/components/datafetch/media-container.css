@@ -29,11 +29,28 @@
     object-fit: cover;
 }
 
+figure {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+
+
 .single-image:hover{
     transition: background-color 0.5s ease;
     background-color: #02251ed3;
     cursor: pointer;
-    transform: scale(1);
+    position:relative;
+    z-index: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1.3);
+    -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
+
 }
 
 
