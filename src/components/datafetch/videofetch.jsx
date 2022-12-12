@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef} from "react";
 import './media-container.css';
+import HoverVideoPlayer from 'react-hover-video-player';
 
 
 export default function VideoFetch({query}){
@@ -22,40 +23,47 @@ export default function VideoFetch({query}){
         
     },[query])
 
+//     const  videoMap= videoArray.map((i)=>{
+//         const url = i.video_files[2].link
+//        return(
+//         <video controls className="single-video" > 
+//         <source src={url} type="video/mp4" />
+//         </video>
+//        )
+//    })
+
     const  videoMap= videoArray.map((i)=>{
         const url = i.video_files[2].link
        return(
-        <video controls className="single-video"> 
-        <source src={url} type="video/mp4" />
-        </video>
+        <HoverVideoPlayer videoSrc = {url} controls controlsList="nodownload noloading notime"className="single-video" type="video/mp4" onHoverStart={() => {console.log('Userjustmousedover')}} /> 
        )
    })
 
     // for video autoplay
 
-//     const ref = useRef(null);
-//     const [focus, setFocus] = useState(false);
+    const ref = useRef(null);
+    const [focus, setFocus] = useState(false);
 
-//     const loop = () => {
-//         ref.current.play();
-//     }
+    const loop = () => {
+        ref.current.play();
+    }
 
-//     const onEndedLoop = () => {
-//         if (focus) loop();
-//     }
+    const onEndedLoop = () => {
+        if (focus) loop();
+    }
 
     
 
-//     useEffect(() => {
-// if (focus) loop();
-//     }, [focus])
+    useEffect(() => {
+if (focus) loop();
+    }, [focus])
   
     return(
         <>
-        <div className="video-container">
-            <span className="video-grid">
+        <div className="video-wrapper">
+            <div className="video-grid">
                 {videoMap}
-                </span>
+                </div>
         </div>
         
         </>
