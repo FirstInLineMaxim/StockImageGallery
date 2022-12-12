@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Pagination from "./pagination";
 import Popup from "./popup";
 
-export default function ImageFetch(){
+export default function ImageFetch({query}){
     const [openPopup,setOpenPopup] = useState(false)
     const [imageArray,setimageArray] = useState([])
     const [currentPage,setCurrentPage] =useState(1)
@@ -11,9 +11,9 @@ export default function ImageFetch(){
 
     useEffect(()=>{
         async function fetchData(){
-       await fetch("https://api.pexels.com/v1/search?query=nature&per_page=80",{
+       await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80`,{
             headers:{
-                Authorization: "563492ad6f91700001000001620506b875614302bd8f6e133d82d091"
+                Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
             }
         })
         .then((res)=>res.json())
@@ -21,7 +21,8 @@ export default function ImageFetch(){
         }
         fetchData()
         
-    },[])
+    },[query])
+    
     function popup(e){ 
         
         

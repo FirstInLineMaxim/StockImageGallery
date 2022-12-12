@@ -6,15 +6,13 @@ import VideoFetch from "../datafetch/videofetch";
 
 
 
-
-export default function CustomRoutes() {
+export default function CustomRoutes({search}) {
   return (
     <>
       <Routes>
         <Route path="/"/>
-        <Route path="images" element={<ImageFetch/>} />
-        <Route path="video" element={<VideoFetch/>} />
-
+        <Route path="images" element={<ImageFetch query={search}/>} />
+        <Route path="video" element={<VideoFetch query={search}/>} />
       </Routes>
     </>
   );
