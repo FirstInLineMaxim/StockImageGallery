@@ -1,1 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+
+.navigaton_Links{
+    padding: 10px;
+display: flex;
+justify-content: center;
+gap:1rem;
+}
+.navigaton_Links a{
+    border-radius: 25px;
+padding: 1rem;
+text-decoration: none;
+}
+.active{
+    font-weight: 700;
+    background-color: black;
+    color: white;
+}

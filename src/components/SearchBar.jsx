@@ -1,7 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { FaSearch } from "react-icons/fa";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 
 
 export default function SearchBar({ onQuery }) {
@@ -33,22 +31,6 @@ export default function SearchBar({ onQuery }) {
 
   return (
     <>
-    {/* <p>{incompleteWord}</p>
-     {autoSearch && <Autocomplete onChange={(e) => handleChange(e)} onKeyDown={(e) => handleKeypress(e)}
-        freeSolo
-        id="free-solo-2-demo"
-        options={autoSearch.map((option) => option.word)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search input"
-            InputProps={{
-              ...params.InputProps,
-              type: 'search',
-            }}
-          />
-        )}
-      />} */}
       <input type="text" placeholder="Search for free photos" className="search-input" onChange={(e) => handleChange(e)} onKeyDown={(e) => handleKeypress(e)} ></input>
       <button className="search-bttn" onClick={searchQuery}>
           <FaSearch />
