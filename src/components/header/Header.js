@@ -12,8 +12,9 @@ const[country,setCountry]= useState()
   function random(){
     const randomNumber = Math.floor(Math.random()*country_list.length)
     setCountry(country_list[randomNumber])
+    onQuery(country)
 }
-console.log(country)
+
 
   return (
     <div className="header-container">
@@ -23,7 +24,7 @@ console.log(country)
       </div>
       <p className="header-author">Photo by Karolina Grabowska</p>
       <Search onQuery={onQuery} />
-
+      
     </div>
   );
 }

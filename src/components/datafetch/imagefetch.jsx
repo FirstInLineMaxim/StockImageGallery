@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "./pagination";
 import Popup from "./popup";
+import domtoimage from "dom-to-image";
+import "../popup/Popup.css";
+import { saveAs } from "file-saver";
+
 
 export default function ImageFetch({query}){
     const [openPopup,setOpenPopup] = useState(false)
@@ -13,7 +17,7 @@ export default function ImageFetch({query}){
         async function fetchData(){
        await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80`,{
             headers:{
-                Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
+                Authorization: "563492ad6f91700001000001c4464c195bdb4507be4af966d2c54283"
             }
         })
         .then((res)=>res.json())
@@ -29,45 +33,82 @@ export default function ImageFetch({query}){
         setOpenPopup(true)
       }
 
+  const saveImgHandler = () => {
+    domtoimage.toBlob(document.getElementById("my-node")).then(function (blob) {
+      window.saveAs(blob, "image.png");
+    });
+  };
 
-    const lastPostIndex= currentPage * postsPerPage
-    const firstPostIndex = lastPostIndex - postsPerPage
-    const currentPosts =  imageArray.slice(firstPostIndex,lastPostIndex)
-   
-    const  imageMap= currentPosts.map((i,index)=>{
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = imageArray.slice(firstPostIndex, lastPostIndex);
 
-       return(
-        <>
-       <button style={{background: 'none',border:'0px'}} onClick={()=>{
-        setOpenPopup(true)
-        setImageIndex(i)
-        console.log(i)
-       }}> <img src={i.src.tiny} /></button>
-   
-     </>
-       )
-    })
-    
-    if(imageArray&&imageIndex){
-    return(
-        <>
-    {imageMap}
-    <Popup open={openPopup} onClose={()=>setOpenPopup(false)}>
-        <div style={{width:'1000px',height:'600px',background: 'white',border:'0px'}} >
-        <h1>{imageIndex.photographer}</h1>
-        <img src={imageIndex.src.medium}/>
-        </div>
-    </Popup>
+  const imageMap = currentPosts.map((i, index) => {
+    return (
+      <>
+        <button
+          style={{ background: "none", border: "0px" }}
+          onClick={() => {
+            setOpenPopup(true);
+            setImageIndex(i);
+            console.log(i);
+          }}
+        >
+          {" "}
+          <img src={i.src.tiny} />
+        </button>
+      </>
+    );
+  });
 
-       <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
-        </>
-    )
-}
-
-    return(
-        <>
+  if (imageArray && imageIndex) {
+    return (
+      <>
         {imageMap}
-           <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
-            </>
-    )
+        <Popup open={openPopup} onClose={() => setOpenPopup(false)}>
+          <div
+            style={{
+              width: "1000px",
+              height: "600px",
+              background: "white",
+              border: "0px",
+              paddingLeft: "2em",
+            }}
+          >
+            <div className="popup-info-cont">
+              <h2 className="popup-author">{imageIndex.photographer}</h2>
+              <button
+                className="popup-bttn"
+                onClick={() => {
+                  saveImgHandler();
+                }}
+              >
+                Free download
+              </button>
+            </div>
+            <div id="my-node">
+              <img className="popup-img" src={imageIndex.src.medium} />
+            </div>
+          </div>
+        </Popup>
+
+        <Pagination
+          totalPosts={imageArray.length}
+          postsPerPage={postsPerPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </>
+    );
+  }
+
+  return (
+    <>
+      {imageMap}
+      <Pagination
+        totalPosts={imageArray.length}
+        postsPerPage={postsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </>
+  );
 }

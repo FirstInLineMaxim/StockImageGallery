@@ -8,7 +8,7 @@ export default function VideoFetch({query}){
        await fetch(`https://api.pexels.com/videos/search?query=${query}&per_page=25`
        ,{
             headers:{
-                Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
+                Authorization: "563492ad6f91700001000001c4464c195bdb4507be4af966d2c54283"
             }
         })
         .then((res)=>res.json())

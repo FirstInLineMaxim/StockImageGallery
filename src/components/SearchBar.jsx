@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import Autocomplete from '@mui/material/Autocomplete';
 
 
-export default function SearchBar({ onQuery }) {
+export default function SearchBar({ onQuery}) {
   const [autoSearch,setAutoSearch]=useState()
   const [incompleteWord,setIncompleteWord]=useState()
 
