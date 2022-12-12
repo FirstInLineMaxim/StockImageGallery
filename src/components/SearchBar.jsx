@@ -32,7 +32,7 @@ export default function SearchBar({ onQuery }) {
 
   return (
     <>
-    <p>{incompleteWord}</p>
+    {/* <p>{incompleteWord}</p>
      {autoSearch && <Autocomplete onChange={(e) => handleChange(e)} onKeyDown={(e) => handleKeypress(e)}
         freeSolo
         id="free-solo-2-demo"
@@ -47,7 +47,7 @@ export default function SearchBar({ onQuery }) {
             }}
           />
         )}
-      />}
+      />} */}
       <input type="text" placeholder="Search Here" onChange={(e) => handleChange(e)} onKeyDown={(e) => handleKeypress(e)} ></input>
       <button onClick={searchQuery}>Search</button>
     </>
