@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './media-container.css';
 
 export default function VideoFetch(){
     const [videoArray,setvideoArray] = useState([])
@@ -22,7 +23,7 @@ export default function VideoFetch(){
         console.log(i)
         const url = i.video_files[2].link
        return(
-        <video width="320" height="240" controls> 
+        <video controls className="single-video"> 
         <source src={url} type="video/mp4" />
         </video>
        )
@@ -31,7 +32,13 @@ export default function VideoFetch(){
    })
     return(
         <>
-        {videoMap}
+        <div className="media-container">
+            <span className="media-grid video-grid">
+                {videoMap}
+                </span>
+            
+        </div>
+        
         </>
     )
 }

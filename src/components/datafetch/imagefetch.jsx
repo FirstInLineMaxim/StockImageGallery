@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './media-container.css';
 
 export default function ImageFetch(){
     const [imageArray,setimageArray] = useState([])
@@ -14,7 +15,6 @@ export default function ImageFetch(){
         .then((data)=>setimageArray(data.photos))
         }
         fetchData()
-        
     },[])
    
     const  imageMap= imageArray.map((i)=>{
@@ -26,7 +26,12 @@ export default function ImageFetch(){
     })
     return(
         <>
-       {imageMap}
+        <div className="media-container">
+            
+            <span className="media-grid">
+              {imageMap}
+                </span>
+       </div>
         </>
     )
 }
