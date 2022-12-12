@@ -5,29 +5,33 @@ import domtoimage from "dom-to-image";
 import "../popup/Popup.css";
 import { saveAs } from "file-saver";
 
-export default function ImageFetch() {
-  const [openPopup, setOpenPopup] = useState(false);
-  const [imageArray, setimageArray] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(20);
-  const [imageIndex, setImageIndex] = useState();
 
-  useEffect(() => {
-    async function fetchData() {
-      await fetch("https://api.pexels.com/v1/search?query=nature&per_page=80", {
-        headers: {
-          Authorization:
-            "563492ad6f91700001000001620506b875614302bd8f6e133d82d091",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => setimageArray(data.photos));
-    }
-    fetchData();
-  }, []);
-  function popup(e) {
-    setOpenPopup(true);
-  }
+export default function ImageFetch({query}){
+    const [openPopup,setOpenPopup] = useState(false)
+    const [imageArray,setimageArray] = useState([])
+    const [currentPage,setCurrentPage] =useState(1)
+    const [postsPerPage,setPostsPerPage] = useState(20)
+    const [imageIndex,setImageIndex] = useState()
+
+    useEffect(()=>{
+        async function fetchData(){
+       await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80`,{
+            headers:{
+                Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
+            }
+        })
+        .then((res)=>res.json())
+        .then((data)=>setimageArray(data.photos))
+        }
+        fetchData()
+        
+    },[query])
+    
+    function popup(e){ 
+        
+        
+        setOpenPopup(true)
+      }
 
   const saveImgHandler = () => {
     domtoimage.toBlob(document.getElementById("my-node")).then(function (blob) {
