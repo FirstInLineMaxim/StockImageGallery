@@ -41,3 +41,12 @@
   bottom: 1px;
   right: 1.5em;
 }
+
+@media (max-width: 900px) {
+  .header-logo {
+    width: 20%;
+  }
+  .header-button {
+    width: 20%;
+  }
+}
