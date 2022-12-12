@@ -14,9 +14,9 @@ export default function TheDevs() {
             <h3 className="h3">The Developer of this Project</h3>
             <div className='theDevs'>
                 < Alessandra/>
-                <Maksim/>
                 <Ada/>
                 <Robert/>
+                <Maksim/>
             </div>
         </div>
     )
