@@ -54,9 +54,10 @@
 }
 
 .video-grid {
+ max-width: 1400px;
     display: grid;
-        grid-template-columns: repeat(3, minmax(250px, 1fr));
-        grid-gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 16px;
         width: 90%;
         margin: 32px auto;
 }
@@ -69,7 +70,7 @@
 
 @media screen and (max-width: 1024px) {
     .video-grid {
-        --num-cols: 2;
+        grid-template-columns: repeat(2, 1fr);
     
     }
 }
@@ -77,9 +78,11 @@
 @media screen and (max-width: 640px) {
     .video-grid {
         width: 100%;
-        --num-cols: 1;
-        --row-height: 450px;
-        --gap: 12px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+
     }
 }
 
