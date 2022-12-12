@@ -13,7 +13,7 @@ export default function TheDevs() {
         <div className='theMain'>
             <h3 className="h3">The Developer of this Project</h3>
             <div className='theDevs'>
-                < Alessandra/>
+                <Alessandra/>
                 <Ada/>
                 <Robert/>
                 <Maksim/>
