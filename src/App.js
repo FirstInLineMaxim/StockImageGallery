@@ -12,7 +12,7 @@ function App() {
       <Link to="/images">Images</Link>
       <br />
       <Link to="/video">Video</Link>
-
+      
       {/* SEARCH */}
 
       {/* ROUTER */}
