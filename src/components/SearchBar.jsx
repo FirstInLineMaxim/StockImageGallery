@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { FaSearch } from "react-icons/fa";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
@@ -48,8 +49,10 @@ export default function SearchBar({ onQuery }) {
           />
         )}
       />} */}
-      <input type="text" placeholder="Search Here" onChange={(e) => handleChange(e)} onKeyDown={(e) => handleKeypress(e)} ></input>
-      <button onClick={searchQuery}>Search</button>
+      <input type="text" placeholder="Search for free photos" className="search-input" onChange={(e) => handleChange(e)} onKeyDown={(e) => handleKeypress(e)} ></input>
+      <button className="search-bttn" onClick={searchQuery}>
+          <FaSearch />
+        </button>
     </>
   )
 }
