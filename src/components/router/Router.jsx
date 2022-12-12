@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
-import Test from '../TestComponent'
-import Test2 from '../TestComponent2'
+import ImageFetch from "../datafetch/imagefetch";
+import VideoFetch from "../datafetch/videofetch";
+
+
 
 
 export default function CustomRoutes() {
@@ -9,8 +11,8 @@ export default function CustomRoutes() {
     <>
       <Routes>
         <Route path="/"/>
-        <Route path="images" element={<Test/>} />
-        <Route path="video" element={<Test2/>} />
+        <Route path="images" element={<ImageFetch/>} />
+        <Route path="video" element={<VideoFetch/>} />
       </Routes>
     </>
   );
