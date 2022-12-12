@@ -1,0 +1,43 @@
+.header-container {
+  height: 75vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../images/hero.jpeg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: relative;
+}
+
+.header-navbar {
+  width: 100%;
+  margin: 0;
+  padding-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.header-logo {
+  width: 10%;
+  margin-left: 10%;
+}
+
+.header-button {
+  background-color: white;
+  border: 1px solid white;
+  padding: 0 0.8em;
+  margin-right: 10%;
+  color: black;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.9em;
+  border-radius: 6px;
+}
+
+.header-author {
+  text-align: right;
+  color: white;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  position: absolute;
+  bottom: 1px;
+  right: 1.5em;
+}
