@@ -1,11 +1,11 @@
 import React from "react";
 import "./Search.css";
 
-import { FaSearch } from "react-icons/fa";
+// import { FaSearch } from "react-icons/fa";
 import SearchBar from "../SearchBar";
 
 
-export default function Search({ onQuery }) {
+export default function Search({ onQuery}) {
   return (
     <div className="search-container">
       <h1 className="search-title">

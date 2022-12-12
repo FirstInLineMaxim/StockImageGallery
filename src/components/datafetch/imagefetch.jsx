@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "./pagination";
 import Popup from "./popup";
+import domtoimage from "dom-to-image";
+import "../popup/Popup.css";
+import { saveAs } from "file-saver";
+
 
 export default function ImageFetch({query}){
     const [openPopup,setOpenPopup] = useState(false)
@@ -11,9 +15,12 @@ export default function ImageFetch({query}){
 
     useEffect(()=>{
         async function fetchData(){
-       await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=25`,{
+       await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80`,{
             headers:{
                 Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
+
+                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
+
             }
         })
         .then((res)=>res.json())
@@ -29,6 +36,12 @@ export default function ImageFetch({query}){
         setOpenPopup(true)
       }
 
+  const saveImgHandler = () => {
+    domtoimage.toBlob(document.getElementById("my-node")).then(function (blob) {
+      window.saveAs(blob, "image.png");
+    });
+  };
+
 
     const lastPostIndex= currentPage * postsPerPage
     const firstPostIndex = lastPostIndex - postsPerPage
@@ -38,11 +51,11 @@ export default function ImageFetch({query}){
 
        return(
         <>
-       <button style={{background: 'none',border:'0px'}} onClick={()=>{
+       <button  style={{background: 'none',border:'0px'}} onClick={()=>{
         setOpenPopup(true)
         setImageIndex(i)
         console.log(i)
-       }}> <img src={i.src.tiny} /></button>
+       }}> <figure > <img  src={i.src.tiny} className="single-image" /></figure></button>
    
      </>
        )
@@ -51,7 +64,9 @@ export default function ImageFetch({query}){
     if(imageArray&&imageIndex){
     return(
         <>
-    {imageMap}
+       <div className="media-container">
+            <span className="media-grid"> {imageMap} </span>
+        </div>
     <Popup open={openPopup} onClose={()=>setOpenPopup(false)}>
         <div style={{width:'1000px',height:'600px',background: 'white',border:'0px'}} >
         <h1>{imageIndex.photographer}</h1>
@@ -60,14 +75,18 @@ export default function ImageFetch({query}){
     </Popup>
 
        <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+
         </>
     )
 }
 
     return(
         <>
-        {imageMap}
+        <div className="media-container">
+            <span className="media-grid"> {imageMap} </span>
+        </div>
            <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
             </>
     )
 }
+
