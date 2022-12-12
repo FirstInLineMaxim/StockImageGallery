@@ -18,9 +18,6 @@ export default function ImageFetch({query}){
        await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=80`,{
             headers:{
                 Authorization: "563492ad6f9170000100000124ab6329ef3741459a9f0df02892ac91"
-
-                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
-
             }
         })
         .then((res)=>res.json())
