@@ -77,7 +77,6 @@ export default function ImageFetch({ query }) {
               height: "600px",
               background: "white",
               border: "0px",
-              paddingLeft: "5%",
             }}
           >
             <div className="popup-info-cont">
