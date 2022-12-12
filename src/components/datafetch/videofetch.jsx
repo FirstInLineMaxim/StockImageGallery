@@ -8,7 +8,7 @@ export default function VideoFetch(){
        await fetch("https://api.pexels.com/videos/search?query=nature&per_page=25"
        ,{
             headers:{
-                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
+                Authorization: "563492ad6f91700001000001620506b875614302bd8f6e133d82d091"
             }
         })
         .then((res)=>res.json())

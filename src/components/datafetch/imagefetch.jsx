@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
+import Pagination from "./pagination";
+import Popup from "./popup";
 
 export default function ImageFetch(){
+    const [openPopup,setOpenPopup] = useState(false)
     const [imageArray,setimageArray] = useState([])
+    const [currentPage,setCurrentPage] =useState(1)
+    const [postsPerPage,setPostsPerPage] = useState(20)
+    const [imageIndex,setImageIndex] = useState()
 
     useEffect(()=>{
         async function fetchData(){
-       await fetch("https://api.pexels.com/v1/search?query=nature&per_page=25",{
+       await fetch("https://api.pexels.com/v1/search?query=nature&per_page=80",{
             headers:{
-                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
+                Authorization: "563492ad6f91700001000001620506b875614302bd8f6e133d82d091"
             }
         })
         .then((res)=>res.json())
@@ -16,17 +22,51 @@ export default function ImageFetch(){
         fetchData()
         
     },[])
+    function popup(e){ 
+        
+        
+        setOpenPopup(true)
+      }
+
+
+    const lastPostIndex= currentPage * postsPerPage
+    const firstPostIndex = lastPostIndex - postsPerPage
+    const currentPosts =  imageArray.slice(firstPostIndex,lastPostIndex)
    
-    const  imageMap= imageArray.map((i)=>{
-        console.log(i)
-        console.log(i.src.large)
+    const  imageMap= currentPosts.map((i,index)=>{
+
        return(
-        <img src={i.src.tiny} />
+        <>
+       <button style={{background: 'none',border:'0px'}} onClick={()=>{
+        setOpenPopup(true)
+        setImageIndex(i)
+        console.log(i)
+       }}> <img src={i.src.tiny} /></button>
+   
+     </>
        )
     })
+    
+    if(imageArray&&imageIndex){
     return(
         <>
-       {imageMap}
+    {imageMap}
+    <Popup open={openPopup} onClose={()=>setOpenPopup(false)}>
+        <div style={{width:'1000px',height:'600px',background: 'white',border:'0px'}} >
+        <h1>{imageIndex.photographer}</h1>
+        <img src={imageIndex.src.medium}/>
+        </div>
+    </Popup>
+
+       <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
         </>
+    )
+}
+
+    return(
+        <>
+        {imageMap}
+           <Pagination totalPosts={imageArray.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+            </>
     )
 }
