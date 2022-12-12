@@ -13,7 +13,7 @@ export default function ImageFetch({query}){
         async function fetchData(){
        await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=25`,{
             headers:{
-                Authorization: "563492ad6f91700001000001620506b875614302bd8f6e133d82d091"
+                Authorization: "563492ad6f917000010000018d6e567481954be7adb58821c258f84b"
             }
         })
         .then((res)=>res.json())
