@@ -12,7 +12,7 @@ export default function CustomRoutes({search}) {
       <Routes>
         <Route path="/"/>
         <Route path="images" element={<ImageFetch query={search}/>} />
-        <Route path="videos" element={<VideoFetch query={search}/>} />
+        <Route path="video" element={<VideoFetch query={search}/>} />
       </Routes>
     </>
   );

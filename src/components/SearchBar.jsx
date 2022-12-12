@@ -8,7 +8,7 @@ export default function SearchBar({ onQuery }) {
   const [autoSearch,setAutoSearch]=useState()
   const [incompleteWord,setIncompleteWord]=useState()
 
-  const search = useRef()
+  const search = useRef('Nature')
   useEffect(() => {
     fetch(`https://api.datamuse.com/words?sp=${incompleteWord}??`).then(data => data.json()).then(data => setAutoSearch(data))
   }, [incompleteWord])
