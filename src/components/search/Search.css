@@ -46,3 +46,9 @@
   border-bottom-right-radius: 6px;
   padding-right: 1em;
 }
+
+@media (max-width: 900px) {
+  .search-container {
+    width: 80%;
+  }
+}
